@@ -98,6 +98,10 @@ public class Usuario {
         this.Buzon = Buzon;
     }
 
-    
+    @Override
+    public String toString() {
+        return Nombre;
+    }
+   
 
 }
