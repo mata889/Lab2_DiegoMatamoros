@@ -1,7 +1,9 @@
 package lab2_diegomatamoros;
 
+import java.awt.Dialog;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import static lab2_diegomatamoros.Lab2_DiegoMatamoros.Usuario1;
 
 public class Lab2_DiegoMatamoros {
@@ -16,14 +18,16 @@ public class Lab2_DiegoMatamoros {
     static String listaM;
     static String buzon;
     static String menu;
-    static ArrayList Usuario = new ArrayList();
+    static ArrayList Usuario2 = new ArrayList();
     static ArrayList<Usuario> Usuario1 = new ArrayList();
 
     public static void main(String[] args) {
         System.out.println("-------MiniRed------");
         Usuario u = new Usuario();
         do {
+            if (true) {
 
+            }
             menu = JOptionPane.showInputDialog("1.Crear usuario\n 2.Modificar datos \n 3.Eliminar Usuario \n 4.Un Login \n5.Lista de usuarios\n 0. SALIR");
             switch (menu) {
                 case "1":
@@ -64,7 +68,7 @@ public class Lab2_DiegoMatamoros {
                 case "3":
                     int posicion = 0;
                     posicion = Integer.parseInt(JOptionPane.showInputDialog("Introduzca usuario a borrar(su posicion)"));
-                    Usuario.remove(posicion);
+                    Usuario1.remove(posicion);
                     Usuario1.remove(posicion);
                     String e = "";
                     for (Object object : Usuario1) {
@@ -75,18 +79,32 @@ public class Lab2_DiegoMatamoros {
                     JOptionPane.showMessageDialog(null, e);
                     break;
                 case "4":
+                    Entrada entrada = new Entrada();
+                    int algo = 0;
+                    final JPanel panel = new JPanel();
                     String nombre,
                      password;
                     nombre = JOptionPane.showInputDialog("Introduzca su nombre");
                     password = JOptionPane.showInputDialog("Introduzca su contraseña");
+
                     for (int i = 0; i < Usuario1.size(); i++) {
                         if (Usuario1.get(i).getNombre().contains(nombre) && Usuario1.get(i).getPass().contains(password)) {
-                            JOptionPane.showMessageDialog(null, "Bienvenido"+nombre+":)");
-                        } else {
-                            System.out.println("HA INTRODUCIDO UN NOMBRE O UN PASSWORD EQUIVOCADO");
+                            JOptionPane.showMessageDialog(null, "Bienvenido" + nombre + ":)");
+
+                            entrada.setAlwaysOnTop(true);
+                            entrada.setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+                            entrada.setLocationByPlatform(true);
+                            entrada.pack();
+                            entrada.setVisible(true);
+                            algo = 1;
+                            break;
+                        }
+                        if (Usuario1.size() == i-1 && algo == 0) {
+                            JOptionPane.showMessageDialog(panel, "HA INTRODUCIDO UN USUARIO O CONTRASEÑA INCORRECTA", "error", JOptionPane.ERROR_MESSAGE);
                             break;
                         }
                     }
+
                     break;
                 case "5":
                     JOptionPane.showMessageDialog(null, "Listado");
