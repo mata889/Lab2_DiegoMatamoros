@@ -18,7 +18,7 @@ public class Lab2_DiegoMatamoros {
     static String listaM;
     static String buzon;
     static String menu;
-    static ArrayList Usuario2 = new ArrayList();
+    static ArrayList Usuario = new ArrayList();
     static ArrayList<Usuario> Usuario1 = new ArrayList();
 
     public static void main(String[] args) {
@@ -37,8 +37,14 @@ public class Lab2_DiegoMatamoros {
                     User = JOptionPane.showInputDialog("Introduzca user");
                     pass = JOptionPane.showInputDialog("SU passwoord");
                     JOptionPane.showMessageDialog(null, "Ha creado un usuario nuevo");
+                    u.setNombre(Nombre);
+                    u.setEdad(Edad);
+                    u.setLugar(Lugar);
+                    u.setUser(User);
+                    u.setPass(pass);
                     Usuario1.add(new Usuario(Nombre, Edad, Lugar, User, pass));
                     Usuario.add(new Usuario(Nombre, Edad, Lugar, User, pass));
+                    
                     String s = "";
                     int cont = 0;
                     /*for (Object us : Usuario) {
